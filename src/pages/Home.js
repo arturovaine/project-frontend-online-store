@@ -18,8 +18,7 @@ class Home extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.filterCategory = this.filterCategory.bind(this);
-  };
-
+  }
 
   componentDidMount() {
     this.saveCategories();
@@ -71,14 +70,14 @@ class Home extends Component {
         >
           Pesquisar
         </button>
-      <div>
-        <p data-testid="home-initial-message">
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </p>
-        <Link to="/cart" data-testid="shopping-cart-button"> Carrinho </Link>
-        <Categories categories={ categories } filterCategory={ this.filterCategory } />
-        <ProductResults products={ products } />
-      </div>
+        <div>
+          <p data-testid="home-initial-message">
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </p>
+          <Link to="/cart" data-testid="shopping-cart-button"> Carrinho </Link>
+          <Categories categories={ categories } filterCategory={ this.filterCategory } />
+          <ProductResults products={ products } />
+        </div>
       </div>
     );
   }
