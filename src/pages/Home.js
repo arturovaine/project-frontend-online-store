@@ -9,12 +9,12 @@ class Home extends Component {
 
     this.state = {
       categories: [],
-    }
+    };
 
     this.saveCategories = this.saveCategories.bind(this);
   }
-  
-  componentDidMount(){
+
+  componentDidMount() {
     this.saveCategories();
   }
 
@@ -22,6 +22,7 @@ class Home extends Component {
     const categories = await getCategories();
     this.setState({ categories });
   }
+
   render() {
     const { categories } = this.state;
 
@@ -31,7 +32,7 @@ class Home extends Component {
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
         <Link to="/cart" data-testid="shopping-cart-button"> Carrinho </Link>
-        <Categories categories={ categories }/>
+        <Categories categories={ categories } />
       </div>
     );
   }
