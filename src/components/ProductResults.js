@@ -14,6 +14,7 @@ class ProductResults extends Component {
             title={ product.title }
             thumbnail={ product.thumbnail }
             price={ product.price }
+            id={ product.id }
           />
         )) }
       </div>);
