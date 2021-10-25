@@ -17,6 +17,9 @@ class Home extends Component {
     this.saveCategories = this.saveCategories.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    };
+
+    this.saveCategories = this.saveCategories.bind(this);
   }
 
   componentDidMount() {
@@ -64,6 +67,10 @@ class Home extends Component {
           Pesquisar
         </button>
 
+    const { categories } = this.state;
+
+    return (
+      <div>
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
