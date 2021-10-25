@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Categories extends React.Component {
   render() {
-    const { categories } = this.props;
+    const { categories, filterCategory } = this.props;
     return (
       <div>
         {categories.map((category) => (
@@ -14,6 +14,7 @@ class Categories extends React.Component {
               name="category"
               id={ category.id }
               data-testid="category"
+              onChange={ filterCategory }
             />
           </label>
         ))}

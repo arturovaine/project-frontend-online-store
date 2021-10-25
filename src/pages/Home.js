@@ -17,10 +17,9 @@ class Home extends Component {
     this.saveCategories = this.saveCategories.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    };
+    this.filterCategory = this.filterCategory.bind(this);
+  };
 
-    this.saveCategories = this.saveCategories.bind(this);
-  }
 
   componentDidMount() {
     this.saveCategories();
@@ -46,6 +45,12 @@ class Home extends Component {
     this.setState({ categories });
   }
 
+  async filterCategory({ target }) {
+    const searchResult = await getProductsFromCategoryAndQuery(target.id, '');
+    const { results } = searchResult;
+    this.setState({ products: results });
+  }
+
   render() {
     const { categories, searchValue, products } = this.state;
 
@@ -66,17 +71,14 @@ class Home extends Component {
         >
           Pesquisar
         </button>
-
-    const { categories } = this.state;
-
-    return (
       <div>
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
         <Link to="/cart" data-testid="shopping-cart-button"> Carrinho </Link>
-        <Categories categories={ categories } />
+        <Categories categories={ categories } filterCategory={ this.filterCategory } />
         <ProductResults products={ products } />
+      </div>
       </div>
     );
   }
