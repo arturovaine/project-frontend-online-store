@@ -53,6 +53,11 @@ class ProductDetails extends React.Component {
           Adicionar
         </button>
         <Link to="/cart" data-testid="shopping-cart-button"> Carrinho </Link>
+        <textarea
+          name="evaluation"
+          id="evaluation"
+          data-testid="product-detail-evaluation"
+        />
       </div>
     );
   }
