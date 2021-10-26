@@ -80,7 +80,11 @@ class Home extends Component {
           </p>
           <div>
             <Link to="/cart" data-testid="shopping-cart-button"> Carrinho </Link>
-            <span>{cartProducts.length}</span>
+            <span
+              data-testid="shopping-cart-product-quantity"
+            >
+              {cartProducts.length}
+            </span>
           </div>
           <Categories categories={ categories } filterCategory={ this.filterCategory } />
           <ProductResults
