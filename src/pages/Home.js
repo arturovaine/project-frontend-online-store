@@ -11,6 +11,8 @@ class Home extends Component {
     this.state = {
       categories: [],
       searchValue: '',
+      category: '',
+      query: '',
       products: [],
     };
 
@@ -36,7 +38,7 @@ class Home extends Component {
     const searchResult = await getProductsFromCategoryAndQuery('', searchValue);
     console.log(searchResult);
     const { results } = searchResult;
-    this.setState({ products: results });
+    this.setState({ products: results, query: searchValue });
   }
 
   async saveCategories() {
@@ -47,11 +49,11 @@ class Home extends Component {
   async filterCategory({ target }) {
     const searchResult = await getProductsFromCategoryAndQuery(target.id, '');
     const { results } = searchResult;
-    this.setState({ products: results });
+    this.setState({ products: results, category: target.id });
   }
 
   render() {
-    const { categories, searchValue, products } = this.state;
+    const { categories, searchValue, products, category, query } = this.state;
 
     return (
       <div>
@@ -76,7 +78,7 @@ class Home extends Component {
           </p>
           <Link to="/cart" data-testid="shopping-cart-button"> Carrinho </Link>
           <Categories categories={ categories } filterCategory={ this.filterCategory } />
-          <ProductResults products={ products } />
+          <ProductResults products={ products } category={ category } query={ query } />
         </div>
       </div>
     );
