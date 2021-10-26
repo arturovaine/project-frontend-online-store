@@ -4,7 +4,7 @@ import CardProduct from './CardProduct';
 
 class ProductResults extends Component {
   render() {
-    const { products } = this.props;
+    const { products, category, query } = this.props;
     console.log(products);
     return (
       <div>
@@ -15,6 +15,8 @@ class ProductResults extends Component {
             thumbnail={ product.thumbnail }
             price={ product.price }
             id={ product.id }
+            category={ category }
+            query={ query }
           />
         )) }
       </div>);
@@ -23,6 +25,8 @@ class ProductResults extends Component {
 
 ProductResults.propTypes = {
   products: PropTypes.arrayOf(PropTypes.object).isRequired,
+  query: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
 };
 
 export default ProductResults;
