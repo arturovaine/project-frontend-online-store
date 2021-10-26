@@ -5,16 +5,38 @@ import Cart from './pages/Cart';
 import ProductDetails from './components/ProductDetails';
 import './App.css';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={ Home } />
-        <Route path="/cart" component={ Cart } />
-        <Route path="/product/:id" component={ ProductDetails } />
-      </Switch>
-    </BrowserRouter>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      cartProducts: [],
+    };
+
+    this.addToCart = this.addToCart.bind(this);
+  }
+
+  addToCart(product) {
+    this.setState((previousState) => ({
+      cartProducts: [...previousState.cartProducts, product],
+    }));
+  }
+
+  render() {
+    const { cartProducts } = this.state;
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <Home addToCart={ this.addToCart } cartProducts={ cartProducts } />
+          </Route>
+          <Route path="/cart">
+            <Cart cartProducts={ cartProducts } />
+          </Route>
+          <Route path="/product/:id" component={ ProductDetails } />
+        </Switch>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
