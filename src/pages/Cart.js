@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import CartItem from '../components/CartItem';
 
 class Cart extends Component {
   render() {
     const { cartProducts } = this.props;
     const cartItems = (
       <div>
-        <p data-testid="shopping-cart-product-quantity">{cartProducts.length}</p>
+        <p>
+          {cartProducts.length}
+          produtos no carrinho
+        </p>
         {cartProducts.map((product) => (
-          <div key={ product.id }>
-            <h2
-              data-testid="shopping-cart-product-name"
-            >
-              {product.title}
-            </h2>
-          </div>
+          <CartItem key={ product.id } product={ product } />
         ))}
       </div>
     );

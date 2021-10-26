@@ -5,7 +5,7 @@ import CardProduct from './CardProduct';
 class ProductResults extends Component {
   render() {
     const { products, category, query, addToCart } = this.props;
-    console.log(products);
+    // console.log(products);
     return (
       <div>
         { products.map((product) => (
