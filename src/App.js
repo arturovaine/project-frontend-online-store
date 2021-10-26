@@ -16,9 +16,13 @@ class App extends React.Component {
   }
 
   addToCart(product) {
-    this.setState((previousState) => ({
-      cartProducts: [...previousState.cartProducts, product],
-    }));
+    const { cartProducts } = this.state;
+    const isRepeating = cartProducts.some((item) => (item.id === product.id));
+    if (!isRepeating) {
+      this.setState((previousState) => ({
+        cartProducts: [...previousState.cartProducts, product],
+      }));
+    }
   }
 
   render() {
