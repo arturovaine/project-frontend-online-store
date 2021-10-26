@@ -14,6 +14,9 @@ class Cart extends Component {
             >
               {product.title}
             </h2>
+            <h2 data-testid="shopping-cart-product-quantity">
+              1
+            </h2>
           </div>
         ))}
       </div>
