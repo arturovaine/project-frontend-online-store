@@ -55,7 +55,7 @@ class Home extends Component {
 
   render() {
     const { categories, searchValue, products, category, query } = this.state;
-    const { addToCart } = this.props;
+    const { addToCart, cartProducts } = this.props;
 
     return (
       <div>
@@ -78,7 +78,10 @@ class Home extends Component {
           <p data-testid="home-initial-message">
             Digite algum termo de pesquisa ou escolha uma categoria.
           </p>
-          <Link to="/cart" data-testid="shopping-cart-button"> Carrinho </Link>
+          <div>
+            <Link to="/cart" data-testid="shopping-cart-button"> Carrinho </Link>
+            <span>{cartProducts.length}</span>
+          </div>
           <Categories categories={ categories } filterCategory={ this.filterCategory } />
           <ProductResults
             products={ products }
@@ -94,6 +97,7 @@ class Home extends Component {
 
 Home.propTypes = {
   addToCart: PropTypes.func.isRequired,
+  cartProducts: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Home;

@@ -17,7 +17,13 @@ class CardProduct extends Component {
           <img src={ thumbnail } alt={ title } />
           <h3>{price}</h3>
         </Link>
-        <button type="button" onClick={ () => addToCart(product) }>Adicionar</button>
+        <button
+          data-testid="product-add-to-cart"
+          type="button"
+          onClick={ () => addToCart(product) }
+        >
+          Adicionar
+        </button>
       </div>);
   }
 }
